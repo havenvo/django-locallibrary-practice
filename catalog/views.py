@@ -26,6 +26,7 @@ def index(request):
 
 class BookListView(generic.ListView):
     model = Book
+    paginate_by = 5
 
     def get_queryset(self):
         # return Book.objects.filter(title__icontains='Clean')[:5]  # 5 books containing the title Clean
