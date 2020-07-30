@@ -35,16 +35,13 @@ class Book(models.Model):
 
     display_genre.short_description = 'Genre'
 
+    language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
 
-language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
+    def __str__(self):
+        return self.title
 
-
-def __str__(self):
-    return self.title
-
-
-def get_absolute_url(self):
-    return reverse('book-detail', args=[str(self.id)])
+    def get_absolute_url(self):
+        return reverse('book-detail', args=[str(self.id)])
 
 
 class BookInstance(models.Model):
